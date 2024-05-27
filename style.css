@@ -55,7 +55,7 @@ textarea::-webkit-scrollbar {
     top: 50%;
     transform: translateY(-50%);
     left: 72.6%;
-    background-color: black;
+    background-color: #d7d7d7;
     border: none;
     color: white;
     padding: 8px;
@@ -68,7 +68,7 @@ textarea::-webkit-scrollbar {
     padding-right: 10px;
     width: 50%;
     height: 100%;
-    overflow: auto;
+    /* overflow: auto; */
 }
 
 .tasks-list::-webkit-scrollbar {
@@ -87,19 +87,80 @@ textarea::-webkit-scrollbar {
     border-radius: 10px;
     padding: 10px;
     padding-right: 35px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
 }
 
-.options {
-    transition: 0.2s ease-in-out;
+.options-btn {
+    z-index: 3;
+    transition: 0.2s ease;
     position: absolute;
     right: 1%;
-    bottom: 10%;
-    font-size: 18px;
+    bottom: 18%;
+    font-size: 16px;
     cursor: pointer;
     border-radius: 50%;
     padding: 5px;
 }
 
-.options:hover {
+.options-btn:hover {
     background-color: #bcbbbb;
+}
+
+.menu {
+    z-index: 2;
+    position: absolute;
+    width: 150px;
+    border-radius: 10px;
+    padding: 5px 0px;
+    background-color: #F4F4F4;
+    border: 1px solid #bcbbbb;
+    right: 0.5%;
+    bottom: 6%;
+    visibility: hidden;
+    opacity: 0.5;
+}
+
+.menu li {
+    cursor: pointer;
+    padding: 4px 10px;
+    list-style: none;
+}
+
+.menu li:hover {
+    background-color: #bcbbbb;
+}
+
+.red,
+.yellow,
+.blue,
+.normal {
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+}
+
+.normal {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    background-color: #bcbbbb3f;
+    border: 1px solid #0000009d;
+}
+
+.red {
+    border: 1px solid #ff0000;
+    background-color: #ff00003e;
+}
+
+.yellow {
+    border: 1px solid #daa520;
+    background-color: #ffff0038;
+}
+
+.blue {
+    border: 1px solid #0f99d0;
+    background-color: #87cfeb51;
 }
