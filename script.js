@@ -26,10 +26,10 @@ function addTodo() {
             taskList.innerHTML += ` <div class="task">
             <span class="normal"></span>
             <p>${textarea.value}</p>
-            <i onmouseenter="showMenu(this)" class="ri-more-2-line options-btn"></i>
-            <div onmouseleave="hideMenu(this)" class="menu">
+            <i onclick="showMenu(this)" class="ri-more-2-line options-btn"></i>
+            <div class="menu">
                 <li onclick="deleteTask(this)"><i class="ri-delete-bin-line"></i> Delete</li>
-                <li onclick="editTodo()"><i class="ri-pencil-line"></i> Edit</li>
+                <li onclick="editTodo(this)"><i class="ri-pencil-line"></i> Edit</li>
                 <li onclick="changeColor(this,'#ff00003e','#ff0000')"><span class="red"></span> Urgent</li>
                 <li onclick="changeColor(this,'#ffff0038','#daa520')"><span class="yellow"></span> Important</li>
                 <li onclick="changeColor(this,'#87cfeb51','#0f99d0')"><span class="blue"></span> Assigned</li>
@@ -43,8 +43,30 @@ function addTodo() {
 
 addTodo();
 
-function editTodo() {
-    
+let saveTodoBtn = document.querySelector("#save-todo");
+let discardChanges = document.querySelector("#discard-todo");
+let editContainer = document.querySelector(".edit-todo-div");
+let editTextArea = document.querySelector("#edit-textarea");
+
+function editTodo(elem) {
+
+    let target = elem.parentNode.parentNode.childNodes[3];
+    editContainer.style.display = "flex";
+    editTextArea.value = target.innerHTML;
+
+    saveTodoBtn.addEventListener("click", () => {
+        if (editTextArea.value !== "") {
+            target.innerHTML = editTextArea.value;
+            editContainer.style.display = "none";
+        }
+    });
+
+    discardChanges.addEventListener("click", () => {
+        if (editTextArea.value !== "") {
+            editContainer.style.display = "none";
+        }
+    })
+
 }
 
 function changeColor(elem, bgColor, border) {
@@ -58,18 +80,21 @@ function deleteTask(elem) {
     targetElem.remove();
 }
 
+let flag = false;
 function showMenu(elem) {
     let targetElem = elem.parentNode.childNodes[7];
-    gsap.to(targetElem, {
-        visibility: "visible",
-        opacity: 1
-    })
-}
-
-function hideMenu(elem) {
-    console.log(elem);
-    gsap.to(elem, {
-        visibility: "hidden",
-        opacity: 0.5
-    })
+    if (flag === false) {
+        gsap.to(targetElem, {
+            visibility: "visible",
+            opacity: 1
+        })
+        flag = true;
+    }
+    else if (flag === true) {
+        gsap.to(targetElem, {
+            visibility: "hidden",
+            opacity: 0.5
+        })
+        flag = false;
+    }
 }

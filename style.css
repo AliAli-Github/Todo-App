@@ -74,21 +74,23 @@ textarea::-webkit-scrollbar {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100dvh;
+    height: 100vh;
     backdrop-filter: blur(2px);
     z-index: 999;
-    display: flex;
     justify-content: center;
     align-items: center;
-    /* display: none; */
-    /* do display flex on JavaScript */
+    display: none;
 }
 
 .edit-todo {
+    background-color: #444746;
+    padding: 6vw 2vw;
+    gap: 40px;
+    border-radius: 10px;
     width: 100%;
     display: flex;
     align-items: flex-start;
-    gap: 20px;
+    justify-content: space-between;
     flex-direction: column;
 }
 
@@ -148,7 +150,7 @@ textarea::-webkit-scrollbar {
     margin: 10px 0px;
     background-color: #F4F4F4;
     border-radius: 10px;
-    padding: 10px;
+    padding: 14px 10px;
     padding-right: 35px;
     display: flex;
     gap: 12px;
@@ -247,12 +249,17 @@ textarea::-webkit-scrollbar {
 }
 
 @media (max-width: 767px) {
+    .container {
+        padding: 4vw 2vw 2vw 2vw;
+    }
+
     .prompt-div-inner {
         width: 100%;
     }
 
     .tasks-list {
         width: 100%;
+        height: calc(100vh - 100px);
     }
 
     .options-btn {
