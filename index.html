@@ -14,12 +14,21 @@
 
     <div class="container">
         <div class="prompt-div">
-            <textarea id="prompt-textarea" placeholder="Add Something" rows="1"></textarea>
-            <button disabled id="add-task-btn"><i class="ri-arrow-down-line"></i></button>
+            <div class="prompt-div-inner">
+                <textarea id="prompt-textarea" placeholder="Add Something" rows="1"></textarea>
+                <button disabled id="add-task-btn"><i class="ri-arrow-down-line"></i></button>
+            </div>
         </div>
-        <div class="tasks-list">
-           
+        <div class="edit-todo-div">
+            <div class="edit-todo">
+                <textarea id="edit-textarea" rows="1" autofocus></textarea>
+                <div class="btn-div">
+                    <button>Save Changes</button>
+                    <button>Discard</button>
+                </div>
+            </div>
         </div>
+        <div class="tasks-list"></div>
     </div>
 
     <!-- Gsap animation Library -->
