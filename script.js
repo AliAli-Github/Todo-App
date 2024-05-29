@@ -54,6 +54,11 @@ function editTodo(elem) {
     editContainer.style.display = "flex";
     editTextArea.value = target.innerHTML;
 
+    editTextArea.addEventListener("input", function () {
+        this.style.height = "auto";
+        this.style.height = `${this.scrollHeight}px`;
+    })
+
     saveTodoBtn.addEventListener("click", () => {
         if (editTextArea.value !== "") {
             target.innerHTML = editTextArea.value;
